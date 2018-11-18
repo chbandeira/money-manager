@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyAYXe6RwRm_1T-mvRdVv_ctBBNeMS2SCD0",
-    authDomain: "money-manager-t2018.firebaseapp.com",
-    databaseURL: "https://money-manager-t2018.firebaseio.com",
-    projectId: "money-manager-t2018",
-    storageBucket: "money-manager-t2018.appspot.com",
-    messagingSenderId: "893408481174"
+    apiKey: "<API_KEY>",
+    authDomain: "<PROJECT_ID>.firebaseapp.com",
+    databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
+    projectId: "<PROJECT_ID>",
+    storageBucket: "<BUCKET>.appspot.com",
+    messagingSenderId: "<SENDER_ID>"
   }
 };
 
