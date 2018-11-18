@@ -1,3 +1,5 @@
-<p>
-  Work in progress
-</p>
+<ul>
+  <li class="text" *ngFor="let transaction of transactions | async">
+    {{transaction.date.toMillis() | date:'mediumDate'}}
+  </li>
+</ul>
