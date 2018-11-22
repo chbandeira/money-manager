@@ -1,4 +1,4 @@
-export class Transaction {
+export interface Transaction {
     type: string;
     category: string;
     subcategory: string;
