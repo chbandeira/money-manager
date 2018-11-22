@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { environment } from '../environments/environment';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ChartsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [AngularFirestore],

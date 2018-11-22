@@ -1,5 +1,7 @@
-<ul>
-  <li class="text" *ngFor="let transaction of transactions | async">
-    {{transaction.date.toMillis() | date:'mediumDate'}}
-  </li>
-</ul>
+<div style="display: block">
+  <canvas baseChart [chartType]="'doughnut'"></canvas>
+</div>
+
+<div *ngFor="let transaction of transactions | async">
+  {{transaction | json}}
+</div>

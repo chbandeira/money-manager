@@ -11,7 +11,7 @@ export const environment = {
     projectId: "<PROJECT_ID>",
     storageBucket: "<BUCKET>.appspot.com",
     messagingSenderId: "<SENDER_ID>"
-  }
+  } 
 };
 
 /*
