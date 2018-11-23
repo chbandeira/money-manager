@@ -1,14 +1,14 @@
 <div class="container">
-  <div class="row justify-content-md-center pt-3 text-dark">
+  <div class="row d-flex align-items-center text-dark">
     <div class="col-lg-8">
-      <div>
-        <canvas baseChart 
-          [chartType]="'doughnut'" 
-          [colors]="[{ backgroundColor: ['#ff4444', '#4285F4'] }]" 
-          [options]="{ legend: { position: 'bottom', reverse: true } }">
-        </canvas>
-      </div>
+      <canvas baseChart 
+        [labels]="chartConfig.chartLabels" 
+        [chartType]="chartConfig.chartType" 
+        [colors]="chartConfig.chartColors" 
+        [options]="chartConfig.chartOptions">
+      </canvas>
     </div>
+    
     <div class="col-lg-4">
       <table class="table">
         <thead>
@@ -20,16 +20,20 @@
         </thead>
         <tbody>
           <tr *ngFor="let transaction of transactions | async">
-            <td>{{transaction.date.toMillis() | date:'dd/MM/yy'}}</td>
-            <td class="text-capitalize">{{transaction.subcategory}}</td>
-            <td class="text-primary text-right" *ngIf="transaction.type === 'income'; else isExpense">{{transaction.value
-              | currency}}</td>
-            <ng-template #isExpense>
-              <td class="text-danger text-right">{{transaction.value | currency}}</td>
-            </ng-template>
+            <td>
+              {{transaction.date.toMillis() | date:'dd/MM/yy'}}
+            </td>
+            <td class="text-capitalize">
+              {{transaction.subcategory}}
+            </td>
+              <td class="text-danger text-right" 
+                  [class.text-primary]="transaction.type === 'income'"
+                  [class.text-danger]="transaction.type === 'expense'">
+                {{transaction.value | currency}}
+              </td>
           </tr>
           <tr class="bg-light font-weight-bold">
-            <td>Overall</td>
+            <td></td>
             <td></td>
             <td class="text-right">{{overall | currency}}</td>
           </tr>

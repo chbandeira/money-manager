@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { environment } from '../environments/environment';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ChartsModule } from 'ng2-charts';
+import 'chartjs-plugin-labels';
 
 @NgModule({
   declarations: [

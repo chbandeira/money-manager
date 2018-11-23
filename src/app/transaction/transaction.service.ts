@@ -16,7 +16,15 @@ export class TransactionService {
       q.orderBy('date', directionStr)).valueChanges();
   }
 
-  getTotal(transactions: Transaction[]): number {
+  private sumValues(transactions: Transaction[]): number {
     return transactions.reduce((acc, transaction) => acc + transaction.value, 0);
+  }
+
+  getTotalExpense(transactions: Transaction[]): number {
+    return this.sumValues(transactions.filter(t => t.type === 'expense'));
+  }
+
+  getTotalIncome(transactions: Transaction[]): number {
+    return this.sumValues(transactions.filter(t => t.type === 'income'));
   }
 }
