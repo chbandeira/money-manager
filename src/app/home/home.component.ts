@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   constructor(private transactionService: TransactionService) { }
 
   ngOnInit() {
-    this.loading = false;
+    this.loading = true;
     this.chart.data = [0, 0];
     this.currentlyMonth = new Date();
     
@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
       this.chart.data[1] = this.transactionService.getTotalIncome(t).toFixed(2);
       this.overall = this.chart.data[1] - this.chart.data[0];
       this.chart.chart.update();
-      this.loading = true;
+      this.loading = false;
     });
   }
 }
