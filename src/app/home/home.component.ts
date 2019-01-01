@@ -17,21 +17,25 @@ export class HomeComponent implements OnInit {
 
   transactions: Observable<Transaction[]>;
   overall: number;
+  currentlyMonth: any;
   chartConfig = doughnutChartConfig;
+  loading: boolean;
 
   constructor(private transactionService: TransactionService) { }
 
   ngOnInit() {
+    this.loading = false;
     this.chart.data = [0, 0];
-    this.chartConfig.chartOptions.title.text = 'November';
-
+    this.currentlyMonth = new Date();
+    
     this.transactions = this.transactionService.getTransactionsByDate('desc');
-
+    
     this.transactions.subscribe(t => {
       this.chart.data[0] = this.transactionService.getTotalExpense(t).toFixed(2);
       this.chart.data[1] = this.transactionService.getTotalIncome(t).toFixed(2);
       this.overall = this.chart.data[1] - this.chart.data[0];
       this.chart.chart.update();
+      this.loading = true;
     });
   }
 }

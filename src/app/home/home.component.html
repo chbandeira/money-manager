@@ -1,24 +1,36 @@
 <div class="container">
+
   <div class="row d-flex align-items-center text-dark">
     <div class="col-lg-8">
-      <canvas baseChart 
-        [labels]="chartConfig.chartLabels" 
-        [chartType]="chartConfig.chartType" 
-        [colors]="chartConfig.chartColors" 
+      <h6 class="text-center text-dark pt-2">{{currentlyMonth | date:'MMMM'}}</h6>
+
+      <mm-loading [loading]="loading"></mm-loading>
+      <canvas baseChart [labels]="chartConfig.chartLabels" [chartType]="chartConfig.chartType" [colors]="chartConfig.chartColors"
         [options]="chartConfig.chartOptions">
       </canvas>
+
     </div>
-    
+
     <div class="col-lg-4">
+
+      <mm-loading [loading]="loading"></mm-loading>
+      <h3 class="text-center pt-2">{{overall | currency}}</h3>
+
+      <div class="d-flex justify-content-center m-2">
+        <button type="button" class="btn btn-income m-2">Add Income</button>
+        <button type="button" class="btn btn-expense m-2">Add Expense</button>
+      </div>
+
       <table class="table">
         <thead>
           <tr class="bg-light">
             <th scope="col">Date</th>
-            <th scope="col">Description</th>
+            <th scope="col">Last</th>
             <th scope="col" class="text-right">Value</th>
           </tr>
         </thead>
         <tbody>
+          <mm-loading [loading]="loading"></mm-loading>
           <tr *ngFor="let transaction of transactions | async">
             <td>
               {{transaction.date.toMillis() | date:'dd/MM/yy'}}
@@ -26,24 +38,12 @@
             <td class="text-capitalize">
               {{transaction.subcategory}}
             </td>
-              <td class="text-danger text-right" 
-                  [class.text-primary]="transaction.type === 'income'"
-                  [class.text-danger]="transaction.type === 'expense'">
-                {{transaction.value | currency}}
-              </td>
-          </tr>
-          <tr class="bg-light font-weight-bold">
-            <td></td>
-            <td></td>
-            <td class="text-right">{{overall | currency}}</td>
+            <td class="text-danger text-right" [class.text-primary]="transaction.type === 'income'" [class.text-danger]="transaction.type === 'expense'">
+              {{transaction.value | currency}}
+            </td>
           </tr>
         </tbody>
       </table>
-
-      <div class="d-flex flex-row-reverse">
-        <button type="button" class="btn btn-danger">Add Expense</button>
-        <button type="button" class="btn btn-primary mr-2">Add Income</button>
-      </div>
     </div>
   </div>
 </div>

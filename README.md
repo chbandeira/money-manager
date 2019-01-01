@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Configure Firebase
 
-The firebaseConfig at money-manager\src\environments\environment.ts need to be configured. See https://firebase.google.com/docs/
+The firebaseConfig at environment.ts and environment.prod.ts need to be configured. See https://firebase.google.com/docs/
 
 ## Development server
 

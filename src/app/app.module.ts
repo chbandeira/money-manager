@@ -9,17 +9,21 @@ import { environment } from '../environments/environment';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ChartsModule } from 'ng2-charts';
 import 'chartjs-plugin-labels';
+import { TransactionComponent } from './transaction/transaction.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    TransactionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ChartsModule,
+    SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [AngularFirestore],

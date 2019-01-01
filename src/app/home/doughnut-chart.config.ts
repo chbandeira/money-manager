@@ -7,14 +7,8 @@ export const doughnutChartConfig = {
         }
     ],
     chartOptions: {
-        aspectRatio: 1.3,
-        title: {
-            display: true,
-            text: ''
-        },
         legend: {
-            position: 'bottom',
-            reverse: true
+            display: false
         },
         plugins: {
             labels: {
